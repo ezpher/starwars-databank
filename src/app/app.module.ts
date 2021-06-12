@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TestingComponent } from './testing/testing.component';
 import { HttpClientModule } from '@angular/common/http';
-import { StarWarsMaterialModule } from './star-wars-material/star-wars-material.module';
+import { StarWarsMaterialModule } from './shared/star-wars-material/star-wars-material.module';
 
 @NgModule({
   declarations: [
