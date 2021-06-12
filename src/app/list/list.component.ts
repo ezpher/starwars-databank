@@ -27,9 +27,9 @@ export class ListComponent implements OnInit {
   }
 
   goToItem(url: string) {
-    const URL_SECTIONS = url.split('/')
-    const CATEGORY = URL_SECTIONS[4]
-    const ID = URL_SECTIONS[5]
+    const URL_SECTIONS: string[] = url.split('/')
+    const CATEGORY:string = URL_SECTIONS[4]
+    const ID:string = URL_SECTIONS[5]
 
     this.router.navigate(['/item/', CATEGORY, ID])
   }

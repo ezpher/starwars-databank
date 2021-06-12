@@ -9,13 +9,13 @@ import { SwapiService, Person, Film, Starship, Planet, Species } from '../shared
 })
 export class ItemComponent implements OnInit {
   
-  item : object;
+  item: object;
 
   constructor(private route: ActivatedRoute, private swapiSvc: SwapiService) { }
 
   ngOnInit() {
 
-    const CATEGORY = this.route.snapshot.paramMap.get('category')
+    const CATEGORY: string = this.route.snapshot.paramMap.get('category')
     const ID: string = this.route.snapshot.paramMap.get('id')
 
     switch (CATEGORY) {
@@ -35,6 +35,8 @@ export class ItemComponent implements OnInit {
           console.log(res);
           this.item = res;
         })
+
+        break;
       case 'starships':
         this.swapiSvc
         .getItem<Starship>(CATEGORY, ID)
@@ -42,6 +44,8 @@ export class ItemComponent implements OnInit {
           console.log(res);
           this.item = res;
         })
+        break;
+
       case 'vehicles':
         this.swapiSvc
         .getItem<Film>(CATEGORY, ID)
@@ -49,6 +53,8 @@ export class ItemComponent implements OnInit {
           console.log(res);
           this.item = res;
         })
+        break;
+
       case 'species':
         this.swapiSvc
         .getItem<Species>(CATEGORY, ID)
@@ -56,6 +62,8 @@ export class ItemComponent implements OnInit {
           console.log(res);
           this.item = res;
         })
+        break;
+
       case 'planets':
         this.swapiSvc
         .getItem<Planet>(CATEGORY, ID)
@@ -63,8 +71,10 @@ export class ItemComponent implements OnInit {
           console.log(res);
           this.item = res;
       })
-      default:
       break;
+
+      default:
+        break;
     }
 
   }
