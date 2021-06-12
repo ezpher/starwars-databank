@@ -1,0 +1,9 @@
+:host .categories {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+}
+
+:host .categories mat-card {
+    margin: 0 15px 10px;
+}
