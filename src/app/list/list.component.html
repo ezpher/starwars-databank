@@ -1,0 +1,10 @@
+
+<div class="list">
+
+  <h2>{{category | uppercase}}</h2>
+
+  <mat-card *ngFor="let item of items">
+    <span *ngIf="item.name"><a [routerLink]="['/list', 'vehicles']">{{item.name}}</a></span>
+    <span *ngIf="item.title"><a>{{item.title}}</a></span>
+  </mat-card>
+</div>

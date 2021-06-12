@@ -1,0 +1,26 @@
+:host .list {
+    width: 70%;
+    margin: 40px auto 0;
+    text-align: center !important;
+}
+
+:host .list mat-card {
+    height: 30px;
+    line-height: 30px;
+    padding: 10px 7px;
+    margin-bottom: 10px;
+}
+
+:host .list mat-card a {
+    text-decoration: none;
+}
+
+:host .list mat-card a:link, :host .list mat-card a:visited {
+    color: black;
+}
+
+:host .list mat-card a:hover {
+    color: gold;
+}
+
+
