@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StarWarsMaterialModule } from './shared/star-wars-material/star-wars-material.module';
 import { CategoriesComponent } from './categories/categories.component';
 import { ListComponent } from './list/list.component';
+import { ItemComponent } from './item/item.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ListComponent } from './list/list.component';
     TestingComponent,
     CategoriesComponent,
     ListComponent,
+    ItemComponent,
   ],
   imports: [
     BrowserModule,

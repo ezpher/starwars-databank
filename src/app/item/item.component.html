@@ -1,0 +1,15 @@
+<div class="item">
+
+  <h2 *ngIf="item.name">{{item.name}}</h2>
+  <h2 *ngIf="item.title">{{item.title}}</h2>
+
+  <mat-card>
+    <table>
+      <tbody>
+        <tr *ngFor="let item of item | keyvalue">
+          <td>{{item.key}}:</td>&nbsp;<td>{{item.value}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card>
+</div>
