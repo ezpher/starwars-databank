@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 const SWAPI_BASE_URL : string = 'https://swapi.dev/api'
-const CategoryParam : string = 'people'
 
 export interface List {
   count: number;
