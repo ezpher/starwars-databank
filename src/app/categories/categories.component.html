@@ -1,10 +1,10 @@
 
 <div class="categories">
-  <mat-card><a [routerLink]="['/list', 'people']">PEOPLE</a></mat-card>
-  <mat-card><a [routerLink]="['/list', 'films']">FILMS</a></mat-card>
-  <mat-card><a [routerLink]="['/list', 'starships']">STARSHIPS</a></mat-card>
+  <mat-card (click)="goToCategory('people')"><a>PEOPLE</a></mat-card>
+  <mat-card (click)="goToCategory('films')"><a>FILMS</a></mat-card>
+  <mat-card (click)="goToCategory('starships')"><a>STARSHIPS</a></mat-card>
   
-  <mat-card><a [routerLink]="['/list', 'vehicles']">VEHICLES</a></mat-card>
-  <mat-card><a [routerLink]="['/list', 'species']">SPECIES</a></mat-card>
-  <mat-card><a [routerLink]="['/list', 'planets']">PLANETS</a></mat-card>
+  <mat-card (click)="goToCategory('vehicles')"><a>VEHICLES</a></mat-card>
+  <mat-card (click)="goToCategory('species')"><a>SPECIES</a></mat-card>
+  <mat-card (click)="goToCategory('planets')"><a>PLANETS</a></mat-card>
 </div>
