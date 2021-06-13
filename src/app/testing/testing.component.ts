@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { List } from '../shared/models/models';
+import { Category, Item, List } from '../shared/models/models';
 import { SwapiService } from '../shared/services/swapi.service';
 
 @Component({
@@ -28,11 +28,11 @@ import { SwapiService } from '../shared/services/swapi.service';
 })
 export class TestingComponent implements OnInit {
 
-  category : string = 'people';
-  peopleList$ : Observable<List>;
-  people : object[];
+  category: string = Category.People;
+  peopleList$: Observable<List<Item>>;
+  people: object[];
 
-  constructor(private swapiService : SwapiService) { }
+  constructor(private swapiService: SwapiService) { }
 
   ngOnInit() {
 

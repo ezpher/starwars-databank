@@ -8,11 +8,11 @@ export enum Category {
   Planets = 'planets',
 }
 
-export interface List {
+export interface List<T extends Item> {
   count: number;
   next: string;
   previous: string;
-  results: object[];
+  results: T[];
 }
   
 export interface Item extends Person, Film, Species, Starship, Vehicle, Planet {}

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { List } from '../shared/models/models';
+import { Item, List } from '../shared/models/models';
 import { SwapiService } from '../shared/services/swapi.service';
 
 @Component({
@@ -11,10 +11,10 @@ import { SwapiService } from '../shared/services/swapi.service';
 })
 export class ListComponent implements OnInit, OnDestroy {
   
-  listSubscription$ : Subscription;
+  listSubscription$: Subscription;
   category: string;
-  list: List;
-  items: object[];
+  list: List<Item>;
+  items: Item[];
 
   constructor(
     private router: Router, 
