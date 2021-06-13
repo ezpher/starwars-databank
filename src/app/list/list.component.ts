@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { List, SwapiService } from '../shared/services/swapi.service';
+import { List } from '../shared/models/models';
+import { SwapiService } from '../shared/services/swapi.service';
 
 @Component({
   selector: 'app-list',

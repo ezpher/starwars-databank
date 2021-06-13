@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { SwapiService, Person, Film, Starship, Planet, Species } from '../shared/services/swapi.service';
+import { SwapiService } from '../shared/services/swapi.service';
+import { Person, Film, Starship, Planet, Species, Category } from '../shared/models/models';
 
 @Component({
   selector: 'app-item',
@@ -21,7 +22,7 @@ export class ItemComponent implements OnInit, OnDestroy{
     const ID: string = this.route.snapshot.paramMap.get('id')
 
     switch (CATEGORY) {
-      case 'people':
+      case Category.People:
         this.itemSubscription$ = this.swapiSvc
           .getItem<Person>(CATEGORY, ID)
           .subscribe(res => {
@@ -30,7 +31,7 @@ export class ItemComponent implements OnInit, OnDestroy{
           })
             
         break;
-      case 'films':
+      case Category.Films:
         this.itemSubscription$ = this.swapiSvc
         .getItem<Film>(CATEGORY, ID)
         .subscribe(res => {
@@ -39,7 +40,7 @@ export class ItemComponent implements OnInit, OnDestroy{
         })
 
         break;
-      case 'starships':
+      case Category.Starships:
         this.itemSubscription$ = this.swapiSvc
         .getItem<Starship>(CATEGORY, ID)
         .subscribe(res => {
@@ -48,7 +49,7 @@ export class ItemComponent implements OnInit, OnDestroy{
         })
         break;
 
-      case 'vehicles':
+      case Category.Vehicles:
         this.itemSubscription$ = this.swapiSvc
         .getItem<Film>(CATEGORY, ID)
         .subscribe(res => {
@@ -57,7 +58,7 @@ export class ItemComponent implements OnInit, OnDestroy{
         })
         break;
 
-      case 'species':
+      case Category.Species:
         this.itemSubscription$ = this.swapiSvc
         .getItem<Species>(CATEGORY, ID)
         .subscribe(res => {
@@ -66,7 +67,7 @@ export class ItemComponent implements OnInit, OnDestroy{
         })
         break;
 
-      case 'planets':
+      case Category.Planets:
         this.itemSubscription$ = this.swapiSvc
         .getItem<Planet>(CATEGORY, ID)
         .subscribe(res => {

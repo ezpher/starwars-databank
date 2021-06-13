@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SwapiService, List } from '../shared/services/swapi.service';
+import { List } from '../shared/models/models';
+import { SwapiService } from '../shared/services/swapi.service';
 
 @Component({
   selector: 'app-testing',
