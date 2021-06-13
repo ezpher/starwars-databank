@@ -46,4 +46,9 @@
     min-width: 100px;
 }
 
+:host .buttons button:hover {
+    background-color: rgb(232, 196, 2);
+}
+
+
 
