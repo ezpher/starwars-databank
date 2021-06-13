@@ -16,7 +16,6 @@ export class SwapiService {
   // getList will only get the results of 10 items of the category inside the container object, as per API schema; 
   // url with no page query string will only get first page containing first 10 items
   getList(category: string, queryString: string = '') : Observable<List<Item>> {
-
     return this.http
       .get<List<Item>>(`${SWAPI_BASE_URL}/${category}/${queryString}`)
       .pipe(take<List<Item>>(1))
