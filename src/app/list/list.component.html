@@ -10,9 +10,9 @@
 
   
   <div class="buttons">
-    <button mat-raised-button color="accent" (click)="goToPage(list.previous)">PREV</button>
+    <button *ngIf="list && list.previous" mat-raised-button color="accent" (click)="goToPage(list.previous)">PREV</button>
     <div></div>
-    <button mat-raised-button color="accent" (click)="goToPage(list.next)">NEXT</button>
+    <button *ngIf="list && list.next" mat-raised-button color="accent" (click)="goToPage(list.next)">NEXT</button>
   </div>
 
 </div>
