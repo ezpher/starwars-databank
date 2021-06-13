@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Item, List } from '../models/models';
 
-const SWAPI_BASE_URL : string = 'https://swapi.dev/api'
+const SWAPI_BASE_URL: string = 'https://swapi.dev/api'
 
 @Injectable({
   providedIn: 'root'
