@@ -29,11 +29,11 @@ export class ListComponent implements OnInit, OnDestroy {
 
   getList(swapiService: SwapiService, category: string, queryString: string = '') {
     this.listSubscription$ = swapiService
-    .getList(category, queryString)
-    .subscribe(res => {
-      this.list = res;
-      this.items = this.list.results;
-    });
+      .getList(category, queryString)
+      .subscribe(res => {
+        this.list = res;
+        this.items = this.list.results;
+      });
   }
 
   goToItem(url: string) {
@@ -48,8 +48,8 @@ export class ListComponent implements OnInit, OnDestroy {
 
     if (!prevOrNextPage) return;
 
-    const PAGE_QUERYSTR_PATTERN = new RegExp('\\?.+$') 
-    const PAGE_QUERYSTR = prevOrNextPage.match(PAGE_QUERYSTR_PATTERN)[0]
+    const PAGE_QUERYSTR_PATTERN: RegExp = new RegExp('\\?.+$') 
+    const PAGE_QUERYSTR: string = prevOrNextPage.match(PAGE_QUERYSTR_PATTERN)[0]
 
     if (!PAGE_QUERYSTR) return;
 
