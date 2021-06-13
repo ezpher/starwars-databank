@@ -1,0 +1,17 @@
+:host .home {
+    text-align: center;
+}
+
+:host .home > h1 > span {
+    cursor: pointer;
+}
+
+:host .home > h1 > span > a,
+:host .home > h1 > span > a:visited {
+    text-decoration: none;
+    color: gold;
+}
+
+:host .home > h1 > span > a:hover {
+    color: rgb(232, 196, 2);
+}
