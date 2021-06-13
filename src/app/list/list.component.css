@@ -2,7 +2,9 @@
     width: 70%;
     margin: 40px auto 0;
     text-align: center !important;
+    font-weight: bold;
 }
+
 
 :host .list mat-card {
     height: 30px;
@@ -11,8 +13,13 @@
     margin-bottom: 10px;
 }
 
+:host .list mat-card:hover {
+   background-color: #d4d4d4;
+}
+
 :host .list mat-card a {
     text-decoration: none;
+    cursor: pointer;
 }
 
 :host .list mat-card a:link, :host .list mat-card a:visited {
@@ -21,6 +28,22 @@
 
 :host .list mat-card a:hover {
     color: gold;
+}
+
+
+:host .buttons {
+    display: flex;
+}
+
+:host .buttons > div {
+    flex: 1;
+}
+
+:host .buttons button {
+    font-weight: bold;
+    margin: 10px auto 0;
+    padding: 3px 15px;
+    min-width: 100px;
 }
 
 
