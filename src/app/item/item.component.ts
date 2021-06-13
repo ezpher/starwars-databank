@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { SwapiService, Person, Film, Starship, Planet, Species } from '../shared/services/swapi.service';
 
 @Component({
@@ -7,8 +8,9 @@ import { SwapiService, Person, Film, Starship, Planet, Species } from '../shared
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css']
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent implements OnInit, OnDestroy{
   
+  itemSubscription$: Subscription;
   item: object;
 
   constructor(private route: ActivatedRoute, private swapiSvc: SwapiService) { }
@@ -20,7 +22,7 @@ export class ItemComponent implements OnInit {
 
     switch (CATEGORY) {
       case 'people':
-        this.swapiSvc
+        this.itemSubscription$ = this.swapiSvc
           .getItem<Person>(CATEGORY, ID)
           .subscribe(res => {
              console.log(res);
@@ -29,7 +31,7 @@ export class ItemComponent implements OnInit {
             
         break;
       case 'films':
-        this.swapiSvc
+        this.itemSubscription$ = this.swapiSvc
         .getItem<Film>(CATEGORY, ID)
         .subscribe(res => {
           console.log(res);
@@ -38,7 +40,7 @@ export class ItemComponent implements OnInit {
 
         break;
       case 'starships':
-        this.swapiSvc
+        this.itemSubscription$ = this.swapiSvc
         .getItem<Starship>(CATEGORY, ID)
         .subscribe(res => {
           console.log(res);
@@ -47,7 +49,7 @@ export class ItemComponent implements OnInit {
         break;
 
       case 'vehicles':
-        this.swapiSvc
+        this.itemSubscription$ = this.swapiSvc
         .getItem<Film>(CATEGORY, ID)
         .subscribe(res => {
           console.log(res);
@@ -56,7 +58,7 @@ export class ItemComponent implements OnInit {
         break;
 
       case 'species':
-        this.swapiSvc
+        this.itemSubscription$ = this.swapiSvc
         .getItem<Species>(CATEGORY, ID)
         .subscribe(res => {
           console.log(res);
@@ -65,7 +67,7 @@ export class ItemComponent implements OnInit {
         break;
 
       case 'planets':
-        this.swapiSvc
+        this.itemSubscription$ = this.swapiSvc
         .getItem<Planet>(CATEGORY, ID)
         .subscribe(res => {
           console.log(res);
@@ -77,6 +79,10 @@ export class ItemComponent implements OnInit {
         break;
     }
 
+  }
+
+  ngOnDestroy() {
+    this.itemSubscription$.unsubscribe(); 
   }
 
 }
