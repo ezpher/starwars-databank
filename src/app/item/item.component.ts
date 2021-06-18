@@ -11,7 +11,7 @@ import { Person, Film, Starship, Planet, Species, Category, UrlsProperty } from 
 })
 export class ItemComponent implements OnInit, OnDestroy{
   
-  itemSubscription$: Subscription;
+  itemSubscription: Subscription;
   item: object;
   UrlsProperties: Array<string> = [
     UrlsProperty.characters,
@@ -39,7 +39,7 @@ export class ItemComponent implements OnInit, OnDestroy{
 
     switch (CATEGORY) {
       case Category.People:
-        this.itemSubscription$ = this.swapiSvc
+        this.itemSubscription = this.swapiSvc
           .getItem<Person>(CATEGORY, ID)
           .subscribe(([item, homeworld, films, species, starships, vehicles]) => {
              console.log(item);
@@ -53,7 +53,7 @@ export class ItemComponent implements OnInit, OnDestroy{
             
         break;
       case Category.Films:
-        this.itemSubscription$ = this.swapiSvc
+        this.itemSubscription = this.swapiSvc
         .getItem<Film>(CATEGORY, ID)
         .subscribe(([item, species, starships, characters, planets, vehicles]) => {
           console.log(item)
@@ -67,7 +67,7 @@ export class ItemComponent implements OnInit, OnDestroy{
 
         break;
       case Category.Starships:
-        this.itemSubscription$ = this.swapiSvc
+        this.itemSubscription = this.swapiSvc
         .getItem<Starship>(CATEGORY, ID)
         .subscribe(([item, films, pilots]) => {
           console.log(item);
@@ -78,7 +78,7 @@ export class ItemComponent implements OnInit, OnDestroy{
         break;
 
       case Category.Vehicles:
-        this.itemSubscription$ = this.swapiSvc
+        this.itemSubscription = this.swapiSvc
         .getItem<Film>(CATEGORY, ID)
         .subscribe(([item, films, pilots]) => {
           console.log(item);
@@ -89,7 +89,7 @@ export class ItemComponent implements OnInit, OnDestroy{
         break;
 
       case Category.Species:
-        this.itemSubscription$ = this.swapiSvc
+        this.itemSubscription = this.swapiSvc
         .getItem<Species>(CATEGORY, ID)
         .subscribe(([item, homeworld, people]) => {
           console.log(item);
@@ -100,7 +100,7 @@ export class ItemComponent implements OnInit, OnDestroy{
         break;
 
       case Category.Planets:
-        this.itemSubscription$ = this.swapiSvc
+        this.itemSubscription = this.swapiSvc
         .getItem<Planet>(CATEGORY, ID)
         .subscribe(([item, residents, films]) => {
           console.log(item);
@@ -117,7 +117,7 @@ export class ItemComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy() {
-    this.itemSubscription$.unsubscribe(); 
+    this.itemSubscription.unsubscribe(); 
   }
 
 }

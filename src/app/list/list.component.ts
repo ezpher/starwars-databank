@@ -11,7 +11,7 @@ import { SwapiService } from '../shared/services/swapi.service';
 })
 export class ListComponent implements OnInit, OnDestroy {
   
-  listSubscription$: Subscription;
+  listSubscription: Subscription;
   category: string;
   list: List<Item>;
   items: Item[];
@@ -29,7 +29,7 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   getList(swapiService: SwapiService, category: string, queryString: string = '') {
-    this.listSubscription$ = swapiService
+    this.listSubscription = swapiService
       .getList(category, queryString)
       .subscribe(res => {
         this.list = res;
@@ -58,6 +58,6 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.listSubscription$.unsubscribe()
+    this.listSubscription.unsubscribe()
   }
 }
