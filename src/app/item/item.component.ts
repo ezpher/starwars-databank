@@ -43,11 +43,11 @@ export class ItemComponent implements OnInit, OnDestroy{
           .getItem<Person>(CATEGORY, ID)
           .subscribe(([item, homeworld, films, species, starships, vehicles]) => {
              console.log(item);
-             item['homeworld'] = homeworld
-             item['films'] = films
-             item['species'] = species
-             item['starships'] = starships
-             item['vehicles'] = vehicles
+             item[UrlsProperty.homeworld] = homeworld
+             item[UrlsProperty.films] = films
+             item[UrlsProperty.species] = species
+             item[UrlsProperty.starships] = starships
+             item[UrlsProperty.vehicles] = vehicles
              this.item = item;
           })
             
@@ -57,11 +57,11 @@ export class ItemComponent implements OnInit, OnDestroy{
         .getItem<Film>(CATEGORY, ID)
         .subscribe(([item, species, starships, characters, planets, vehicles]) => {
           console.log(item)
-          item['species'] = species
-          item['starships'] = starships
-          item['characters'] = characters
-          item['planets'] = planets
-          item['vehicles'] = vehicles
+          item[UrlsProperty.species] = species
+          item[UrlsProperty.starships] = starships
+          item[UrlsProperty.characters] = characters
+          item[UrlsProperty.planets] = planets
+          item[UrlsProperty.vehicles] = vehicles
           this.item = item;
         })
 
@@ -71,8 +71,8 @@ export class ItemComponent implements OnInit, OnDestroy{
         .getItem<Starship>(CATEGORY, ID)
         .subscribe(([item, films, pilots]) => {
           console.log(item);
-          item['films'] = films
-          item['pilots'] = pilots
+          item[UrlsProperty.films] = films
+          item[UrlsProperty.pilots] = pilots
           this.item = item;
         })
         break;
@@ -82,8 +82,8 @@ export class ItemComponent implements OnInit, OnDestroy{
         .getItem<Film>(CATEGORY, ID)
         .subscribe(([item, films, pilots]) => {
           console.log(item);
-          item['films'] = films
-          item['pilots'] = pilots
+          item[UrlsProperty.films] = films
+          item[UrlsProperty.pilots] = pilots
           this.item = item;
         })
         break;
@@ -93,8 +93,8 @@ export class ItemComponent implements OnInit, OnDestroy{
         .getItem<Species>(CATEGORY, ID)
         .subscribe(([item, homeworld, people]) => {
           console.log(item);
-          item['homeworld'] = homeworld
-          item['people'] = people
+          item[UrlsProperty.homeworld] = homeworld
+          item[UrlsProperty.people] = people
           this.item = item;
         })
         break;
@@ -104,8 +104,8 @@ export class ItemComponent implements OnInit, OnDestroy{
         .getItem<Planet>(CATEGORY, ID)
         .subscribe(([item, residents, films]) => {
           console.log(item);
-          item['residents'] = residents
-          item['films'] = films
+          item[UrlsProperty.residents] = residents
+          item[UrlsProperty.films] = films
           this.item = item;
       })
       break;
