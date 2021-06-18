@@ -6,8 +6,20 @@
   <mat-card>
     <table>
       <tbody>
-        <tr *ngFor="let item of item | keyvalue">
-          <td>{{item.key}}:</td>&nbsp;<td>{{item.value}}</td>
+        <tr *ngFor="let elem of item | keyvalue">
+          <ng-container *ngIf="IsUrlsProperty(elem.key); else normalItem">
+            <td>{{elem.key}}:</td>&nbsp;
+            <td>
+              <div *ngFor="let child of elem.value">
+                <span *ngIf="child && child.name">{{child.name}}</span>
+                <span *ngIf="child && child.title">{{child.title}}</span>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-template #normalItem>
+            <td>{{elem.key}}:</td>&nbsp;<td>{{elem.value}}</td>
+          </ng-template>
         </tr>
       </tbody>
     </table>

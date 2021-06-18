@@ -8,6 +8,19 @@ export enum Category {
   Planets = 'planets',
 }
 
+export enum UrlsProperty {
+  characters = "characters",
+  people = "people",
+  pilots = "pilots",
+  residents = "residents",
+  films = "films",
+  starships = "starships",
+  vehicles = "vehicles",
+  species = "species",
+  planets = "planets",
+  homeworld = "homeworld"
+}
+
 export interface List<T extends Item> {
   count: number;
   next: string;
@@ -32,6 +45,7 @@ export interface Person {
   starships: string[];
   vehicles: string[]; 
   url: string;
+
 }
 
 export interface Film {
