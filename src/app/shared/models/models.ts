@@ -1,13 +1,4 @@
 
-export enum Category {
-  People = 'people',
-  Films = 'films',
-  Starships = 'starships',
-  Vehicles = 'vehicles',
-  Species = 'species',
-  Planets = 'planets',
-}
-
 export enum UrlsProperty {
   characters = "characters",
   people = "people",
@@ -19,6 +10,27 @@ export enum UrlsProperty {
   species = "species",
   planets = "planets",
   homeworld = "homeworld"
+}
+
+export enum HiddenFields {
+  created = 'created',
+  edited = 'edited',
+  url = 'url',
+  episode_id = 'episode_id'
+}
+
+export enum ItemNameType {
+  name = 'name',
+  title = 'title'
+}
+
+export enum Category {
+  People = 'people',
+  Films = 'films',
+  Starships = 'starships',
+  Vehicles = 'vehicles',
+  Species = 'species',
+  Planets = 'planets',
 }
 
 export interface List<T extends Item> {
@@ -39,13 +51,12 @@ export interface Person {
   height: string;
   mass: string;
   skin_color: string;
-  homeworld: string;  
-  films: string[];    
-  species: string[];  
-  starships: string[];
-  vehicles: string[]; 
+  homeworld: string[]|string;  
+  films: string[]|string;    
+  species: string[]|string;  
+  starships: string[]|string;
+  vehicles: string[]|string; 
   url: string;
-
 }
 
 export interface Film {
@@ -55,11 +66,11 @@ export interface Film {
   director: string;
   producer: string;
   release_date: Date;
-  species: string[];  
-  starships: string[]; 
-  characters: string[];
-  planets: string[];  
-  vehicles: string[]; 
+  species: string[]|string;  
+  starships: string[]|string; 
+  characters: string[]|string;
+  planets: string[]|string;  
+  vehicles: string[]|string; 
   url: string;
 }
 
@@ -73,9 +84,9 @@ export interface Species {
   hair_colors: string;
   skin_colors: string;
   language: string;
-  homeworld: string;
-  people: string[];
-  films: string[];
+  homeworld: string[]|string;
+  people: string[]|string;
+  films: string[]|string;
 }
 
 export interface Starship {
@@ -92,8 +103,8 @@ export interface Starship {
   MGLT: string;
   cargo_capacity: string;
   consumables: string;
-  films: string[];
-  pilots: string[];
+  films: string[]|string;
+  pilots: string[]|string;
 }
 
 export interface Vehicle {
@@ -108,8 +119,8 @@ export interface Vehicle {
   max_atmosphering_speed: string;
   cargo_capacity: string;
   consumables: string;
-  films: string[];
-  pilots: string[];
+  films: string[]|string;
+  pilots: string[]|string;
   url: string;
 }
 
@@ -123,7 +134,7 @@ export interface Planet {
   climate: string;
   terrain: string;
   surface_water: string;
-  residents: string[];
-  films: string[];
+  residents: string[]|string;
+  films: string[]|string;
   url: string;
 }

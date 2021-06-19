@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SwapiService } from '../shared/services/swapi.service';
-import { Person, Film, Starship, Planet, Species, Category, UrlsProperty } from '../shared/models/models';
+import { Person, Film, Starship, Planet, Species, Category, UrlsProperty, HiddenFields, Item, ItemNameType } from '../shared/models/models';
 
 @Component({
   selector: 'app-item',
@@ -13,6 +13,7 @@ export class ItemComponent implements OnInit, OnDestroy{
   
   itemSubscription: Subscription;
   item: object;
+  
   UrlsProperties: Array<string> = [
     UrlsProperty.characters,
     UrlsProperty.people,
@@ -26,10 +27,29 @@ export class ItemComponent implements OnInit, OnDestroy{
     UrlsProperty.homeworld
   ]
 
+  HiddenFields: Array<string> = [
+    HiddenFields.created,
+    HiddenFields.edited, 
+    HiddenFields.url,
+    HiddenFields.episode_id
+  ]
+
   constructor(private route: ActivatedRoute, private swapiSvc: SwapiService) { }
 
   IsUrlsProperty(key: string) {
     return this.UrlsProperties.indexOf(key) > -1
+  }
+
+  IsHiddenField(key: string) {
+    return this.HiddenFields.indexOf(key) > -1
+  }
+
+  private GetDelimitedNames(array: Array<Item>) : string {
+    return array != null ? 
+      array.map(item => Object.keys(item).lastIndexOf(ItemNameType.name) > -1 
+        ? item.name 
+        : item.title
+      ).join(', ') : 'n/a';
   }
 
   ngOnInit() {
@@ -43,11 +63,11 @@ export class ItemComponent implements OnInit, OnDestroy{
           .getItem<Person>(CATEGORY, ID)
           .subscribe(([item, homeworld, films, species, starships, vehicles]) => {
              console.log(item);
-             item[UrlsProperty.homeworld] = homeworld
-             item[UrlsProperty.films] = films
-             item[UrlsProperty.species] = species
-             item[UrlsProperty.starships] = starships
-             item[UrlsProperty.vehicles] = vehicles
+             item[UrlsProperty.homeworld] = this.GetDelimitedNames(homeworld)
+             item[UrlsProperty.films] = this.GetDelimitedNames(films)
+             item[UrlsProperty.species] = this.GetDelimitedNames(species)
+             item[UrlsProperty.starships] = this.GetDelimitedNames(starships)
+             item[UrlsProperty.vehicles] = this.GetDelimitedNames(vehicles)
              this.item = item;
           })
             
@@ -57,11 +77,11 @@ export class ItemComponent implements OnInit, OnDestroy{
         .getItem<Film>(CATEGORY, ID)
         .subscribe(([item, species, starships, characters, planets, vehicles]) => {
           console.log(item)
-          item[UrlsProperty.species] = species
-          item[UrlsProperty.starships] = starships
-          item[UrlsProperty.characters] = characters
-          item[UrlsProperty.planets] = planets
-          item[UrlsProperty.vehicles] = vehicles
+          item[UrlsProperty.species] = this.GetDelimitedNames(species)
+          item[UrlsProperty.starships] = this.GetDelimitedNames(starships)
+          item[UrlsProperty.characters] = this.GetDelimitedNames(characters)
+          item[UrlsProperty.planets] = this.GetDelimitedNames(planets)
+          item[UrlsProperty.vehicles] = this.GetDelimitedNames(vehicles)
           this.item = item;
         })
 
@@ -71,8 +91,8 @@ export class ItemComponent implements OnInit, OnDestroy{
         .getItem<Starship>(CATEGORY, ID)
         .subscribe(([item, films, pilots]) => {
           console.log(item);
-          item[UrlsProperty.films] = films
-          item[UrlsProperty.pilots] = pilots
+          item[UrlsProperty.films] = this.GetDelimitedNames(films)
+          item[UrlsProperty.pilots] = this.GetDelimitedNames(pilots)
           this.item = item;
         })
         break;
@@ -82,8 +102,8 @@ export class ItemComponent implements OnInit, OnDestroy{
         .getItem<Film>(CATEGORY, ID)
         .subscribe(([item, films, pilots]) => {
           console.log(item);
-          item[UrlsProperty.films] = films
-          item[UrlsProperty.pilots] = pilots
+          item[UrlsProperty.films] = this.GetDelimitedNames(films)
+          item[UrlsProperty.pilots] = this.GetDelimitedNames(pilots)
           this.item = item;
         })
         break;
@@ -91,10 +111,11 @@ export class ItemComponent implements OnInit, OnDestroy{
       case Category.Species:
         this.itemSubscription = this.swapiSvc
         .getItem<Species>(CATEGORY, ID)
-        .subscribe(([item, homeworld, people]) => {
+        .subscribe(([item, homeworld, people, films]) => {
           console.log(item);
-          item[UrlsProperty.homeworld] = homeworld
-          item[UrlsProperty.people] = people
+          item[UrlsProperty.homeworld] = this.GetDelimitedNames(homeworld)
+          item[UrlsProperty.people] = this.GetDelimitedNames(people)
+          item[UrlsProperty.films] = this.GetDelimitedNames(films)
           this.item = item;
         })
         break;
@@ -104,8 +125,8 @@ export class ItemComponent implements OnInit, OnDestroy{
         .getItem<Planet>(CATEGORY, ID)
         .subscribe(([item, residents, films]) => {
           console.log(item);
-          item[UrlsProperty.residents] = residents
-          item[UrlsProperty.films] = films
+          item[UrlsProperty.residents] = this.GetDelimitedNames(residents)
+          item[UrlsProperty.films] = this.GetDelimitedNames(films)
           this.item = item;
       })
       break;

@@ -6,19 +6,19 @@
   <mat-card>
     <table>
       <tbody>
-        <tr *ngFor="let elem of item | keyvalue">
-          <ng-container *ngIf="IsUrlsProperty(elem.key); else normalItem">
-            <td>{{elem.key}}:</td>&nbsp;
-            <td>
-              <div *ngFor="let child of elem.value">
-                <span *ngIf="child && child.name">{{child.name}}</span>
-                <span *ngIf="child && child.title">{{child.title}}</span>
-              </div>
-            </td>
+        <tr *ngFor="let prop of item | keyvalue">
+          <ng-container *ngIf="IsUrlsProperty(prop.key); else normalProp">
+            <td>{{prop.key}}:</td>&nbsp;<td>{{prop.value}}</td>
+            <br>
+            <br>
           </ng-container>
 
-          <ng-template #normalItem>
-            <td>{{elem.key}}:</td>&nbsp;<td>{{elem.value}}</td>
+          <ng-template #normalProp>
+            <ng-container *ngIf="!IsHiddenField(prop.key)">
+              <td>{{prop.key}}:</td>&nbsp;<td>{{prop.value}}</td>
+              <br>
+              <br>
+            </ng-container>
           </ng-template>
         </tr>
       </tbody>
