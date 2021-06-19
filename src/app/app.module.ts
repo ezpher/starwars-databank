@@ -9,6 +9,7 @@ import { StarWarsMaterialModule } from './shared/star-wars-material/star-wars-ma
 import { CategoriesComponent } from './categories/categories.component';
 import { ListComponent } from './list/list.component';
 import { ItemComponent } from './item/item.component';
+import { RemoveUnderscorePipe } from './shared/pipes/remove-underscore.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ItemComponent } from './item/item.component';
     CategoriesComponent,
     ListComponent,
     ItemComponent,
+    RemoveUnderscorePipe,
   ],
   imports: [
     BrowserModule,

@@ -8,14 +8,14 @@
       <tbody>
         <tr *ngFor="let prop of item | keyvalue">
           <ng-container *ngIf="IsUrlsProperty(prop.key); else normalProp">
-            <td>{{prop.key}}:</td>&nbsp;<td>{{prop.value}}</td>
+            <td>{{prop.key | removeUnderscore | titlecase }}:</td>&nbsp;<td>{{prop.value}}</td>
             <br>
             <br>
           </ng-container>
 
           <ng-template #normalProp>
             <ng-container *ngIf="!IsHiddenField(prop.key)">
-              <td>{{prop.key}}:</td>&nbsp;<td>{{prop.value}}</td>
+              <td>{{prop.key | removeUnderscore | titlecase }}:</td>&nbsp;<td>{{prop.value}}</td>
               <br>
               <br>
             </ng-container>
